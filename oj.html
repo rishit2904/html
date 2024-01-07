@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Invitation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #87ceeb;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #000;
+        }
+
+        #invitation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .input-label {
+            font-size: 18px;
+            color: #000;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            width: 250px;
+            box-sizing: border-box;
+        }
+
+        #result {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4500;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .heart {
+            color: #ff0000;
+            font-size: 36px;
+            margin-top: 20px;
+            animation: heartbeat 0.6s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hi Ojaswita, wanted to ask you something...</h1>
+
+    <div id="invitation-container">
+        <label for="name" class="input-label">Before I pop the question, I want you to know...</label>
+        <label for="name" class="input-label">I am committed to working on myself, becoming a better person with no mood swings, and winning the heart of your sister. 😊</label>
+        <label for="name" class="input-label">Now, please share your thoughts:</label>
+        <input type="text" id="name" placeholder="Your response..." />
+        <button onclick="submitResponse()">Submit</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitResponse() {
+            const nameInput = document.getElementById('name');
+            const resultDiv = document.getElementById('result');
+            const invitationContainer = document.getElementById('invitation-container');
+
+            if (nameInput.value.trim() !== '') {
+                invitationContainer.style.display = 'none';
+                resultDiv.innerHTML = `Thank you, ${nameInput.value}! 😊<br> I can't wait to see you in Delhi and ask... Would you like to go on a date with me?`;
+                resultDiv.style.display = 'block';
+                resultDiv.style.animation = 'fadeIn 1s ease-in-out';
+                showHearts();
+            }
+        }
+
+        function showHearts() {
+            for (let i = 0; i < 10; i++) {
+                const heartDiv = document.createElement('div');
+                heartDiv.innerHTML = '&hearts;';
+                heartDiv.className = 'heart';
+                document.body.appendChild(heartDiv);
+            }
+        }
+    </script>
+</body>
+
+</html>
